@@ -16,13 +16,19 @@ starship init fish | source
 eval (perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
 
 # coreutils
-set PATH "/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+set PATH "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 
 # grep
-set PATH "/usr/local/opt/grep/libexec/gnubin:$PATH"
+set PATH "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
+
+# findutils
+set PATH "$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
+
+# sed
+set PATH "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # python (homebrew version)
-set PATH "/usr/local/opt/python/libexec/bin:$PATH"
+set PATH "$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 
 # Aliases
 alias r="radian"
