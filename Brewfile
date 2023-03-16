@@ -25,6 +25,7 @@ brew 'neofetch'
 brew 'pinentry-mac'
 brew 'r'
 brew 'starship'
+brew 'terminal-notifier'
 brew 'yt-dlp'
 
 # Development
