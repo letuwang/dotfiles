@@ -22,7 +22,7 @@ else
 fi
 brew upgrade
 
-# Ensure fish is installed and added to /etc/shells
+# Ensure fish is installed and set to default shell
 if test ! $(which fish); then
   brew install fish
   fish # force fish to generate a default config file
@@ -30,6 +30,7 @@ fi
 if ! grep -F "$HOMEBREW_PREFIX/bin/fish" /etc/shells; then
   echo "$HOMEBREW_PREFIX/bin/fish" | sudo tee -a /etc/shells;
 fi
+chsh -s "$HOMEBREW_PREFIX/bin/fish"
 
 # Removes config.fish in default location and symlinks the config.fish file from the .dotfiles
 rm -rf $HOME/.config/fish/config.fish
@@ -49,11 +50,12 @@ read -p "Please sign in to Mac App Store with Apple ID: wangletu57@gmail.com bef
 brew bundle --file ./Brewfile_us
 brew cleanup
 
+# fix perl
+fish -c "PERL_MM_OPT='INSTALL_BASE=$HOME/perl5' cpan local::lib"
+
 # Ensure fisher is installed and up-to-date
 if test ! $(which fisher); then
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-else
-  fisher update
 fi
 
 # setup symlink for fish_plugins file
@@ -61,7 +63,7 @@ rm -rf $HOME/.config/fish/fish_plugins
 ln -s $HOME/.dotfiles/fish_plugins $HOME/.config/fish/fish_plugins
 
 # Install tools using fisher
-fisher install
+fisher update
 
 # Ensure pip is up-to-date
 python3 -m pip install --upgrade pip

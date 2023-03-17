@@ -1,6 +1,6 @@
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+eval /opt/homebrew/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 # dotfiles
@@ -9,14 +9,14 @@ set -g -x DOTFILES "$HOME/.dotfiles"
 # gnupg
 export GPG_TTY=(tty)
 
+# homebrew
+eval "/opt/homebrew/bin/brew shellenv" | source
+
 # starship
 starship init fish | source
 
-# homebrew
-eval "opt/homebrew/bin/brew shellenv" | source
-
 # perl
-eval (perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
+bass eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # coreutils
 set PATH "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
