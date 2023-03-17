@@ -25,13 +25,13 @@ brew upgrade
 # Ensure fish is installed and added to /etc/shells
 if test ! $(which fish); then
   brew install fish
+  fish # force fish to generate a default config file
 fi
 if ! grep -F "$HOMEBREW_PREFIX/bin/fish" /etc/shells; then
   echo "$HOMEBREW_PREFIX/bin/fish" | sudo tee -a /etc/shells;
 fi
 
 # Removes config.fish in default location and symlinks the config.fish file from the .dotfiles
-fish # force fish to generate a default config file
 rm -rf $HOME/.config/fish/config.fish
 ln -s $HOME/.dotfiles/config.fish $HOME/.config/fish/config.fish
 
