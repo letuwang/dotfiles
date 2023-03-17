@@ -2,6 +2,15 @@
 
 echo "Setting up your Mac..."
 
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Ensure rosetta2 is installed
+sudo softwareupdate --install-rosetta
+
 # Ensure homebrew is installed and up-to-date
 if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -22,8 +31,9 @@ if ! grep -F "$HOMEBREW_PREFIX/bin/fish" /etc/shells; then
 fi
 
 # Removes config.fish in default location and symlinks the config.fish file from the .dotfiles
+fish # force fish to generate a default config file
 rm -rf $HOME/.config/fish/config.fish
-ln -s config.fish $HOME/.config/fish/config.fish
+ln -s $HOME/.dotfiles/config.fish $HOME/.config/fish/config.fish
 
 # setup brew for fish shell
 if test ! $(fish -c "which brew"); then
@@ -50,7 +60,7 @@ fi
 
 # setup symlink for fish_plugins file
 rm -rf $HOME/.config/fish/fish_plugins
-ln -s fish_plugins $HOME/.config/fish/fish_plugins
+ln -s $HOME/.dotfiles/fish_plugins $HOME/.config/fish/fish_plugins
 
 # Install tools using fisher
 fisher install
