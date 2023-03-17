@@ -12,6 +12,9 @@ export GPG_TTY=(tty)
 # starship
 starship init fish | source
 
+# homebrew
+eval "opt/homebrew/bin/brew shellenv" | source
+
 # perl
 eval (perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
 

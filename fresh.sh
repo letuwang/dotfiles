@@ -35,11 +35,6 @@ fi
 rm -rf $HOME/.config/fish/config.fish
 ln -s $HOME/.dotfiles/config.fish $HOME/.config/fish/config.fish
 
-# setup brew for fish shell
-if test ! $(fish -c "which brew"); then
-  echo 'eval "$HOMEBREW_PREFIX/bin/brew shellenv" | source' >> $HOME/.config/fish/config.fish
-fi
-
 # Install a newer version of bash and add to /etc/shells
 brew install bash
 if ! grep -F "$HOMEBREW_PREFIX/bin/bash" /etc/shells; then
