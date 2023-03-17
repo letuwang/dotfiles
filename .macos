@@ -117,7 +117,7 @@ sudo pmset -b displaysleep 10
 
 # Machine sleep after x minutes
 sudo pmset -c sleep 0 # 0 to disable
-sudo pmset -b sleep 5
+sudo pmset -b sleep 20
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
@@ -279,7 +279,7 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool "tru
 defaults write com.apple.dock show-process-indicators -bool true
 
 # Wipe all (default) app icons from the Dock
-defaults write com.apple.dock persistent-apps -array
+# defaults write com.apple.dock persistent-apps -array
 
 # Don’t animate opening applications from the Dock
 defaults write com.apple.dock launchanim -bool false
@@ -297,7 +297,7 @@ defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock showhidden -bool true
 
 # Reset Launchpad, but keep the desktop wallpaper intact
-find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+find "${HOME}/Library/Application Support/Dock" -maxdepth 1 -name "*-*.db" -delete
 
 # Add a spacer to the left side of the Dock (where the applications are)
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
@@ -307,14 +307,6 @@ defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
-
-# Hide Spotlight tray-icon (and subsequent helper)
-sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-
-# Disable Spotlight indexing for any volume that gets mounted and has not yet
-# been indexed before.
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
-sudo mdutil -i off "/Volumes/Seagate" # Time machine
 
 # Disable all search results
 defaults write com.apple.spotlight orderedItems -array \

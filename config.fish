@@ -39,3 +39,4 @@ alias c="clear"
 alias dotfiles="cd $DOTFILES"
 alias brewdepsgraph="brew graph --installed --highlight-leaves | fdp -T png -o graph.png; open graph.png"
 alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
+alias pinentry='pinentry-mac'
