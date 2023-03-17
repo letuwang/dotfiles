@@ -76,12 +76,12 @@ cask 'tower'
 cask 'transmit'
 cask 'transocks'
 cask 'typora'
-cask 'upic'
+cask 'bigwig-club/brew/upic'
 cask 'utm'
 cask 'via'
 cask 'visual-studio-code'
 cask 'wechat'
-cask 'wechattweak-cli'
+cask 'sunnyyoung/repo/wechattweak-cli'
 cask 'yesplaymusic'
 cask 'zoom'
 
@@ -90,10 +90,6 @@ cask 'font-caskaydia-cove-nerd-font'
 cask 'font-fira-code'
 
 # Mac App Store
-mas 'Amphetamine', id: 937984704
-mas 'Dropover', id: 1355679052
+#! Requires apple ID: letu57@qq.com
 mas 'Irvue', id: 1039633667
-mas 'Keynote', id: 409183694
 mas 'Pixelmator Pro', id: 1289583905
-mas 'Pages', id: 409201541
-mas 'Ulysses | Writing App', id: 1225570693

@@ -44,6 +44,9 @@ fi
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
 brew bundle --file ./Brewfile
+mas signout
+read -p "Please sign in to Mac App Store with Apple ID: wangletu57@gmail.com before pressing enter to continue!"
+brew bundle --file ./Brewfile_us
 brew cleanup
 
 # Ensure fisher is installed and up-to-date
