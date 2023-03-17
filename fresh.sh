@@ -63,11 +63,13 @@ ln -s $HOME/.dotfiles/fish_plugins $HOME/.config/fish/fish_plugins
 # Install tools using fisher
 fisher install
 
+# Ensure pip is up-to-date
+python3 -m pip install --upgrade pip
 # Install tools using pip
 pip3 install -U radian
 
 # Symlink the Mackup config file to the home directory
-ln -s .mackup.cfg $HOME/.mackup.cfg
+ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Set macOS preferences - we will run this last because this will reload the shell
 source ./.macos
