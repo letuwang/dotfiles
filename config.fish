@@ -16,7 +16,7 @@ eval "/opt/homebrew/bin/brew shellenv" | source
 starship init fish | source
 
 # perl
-bass eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # coreutils
 set PATH "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
