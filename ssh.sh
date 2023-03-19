@@ -8,7 +8,7 @@ ssh-keygen -t ed25519 -C wangletu57@gmail.com -f ~/.ssh/id_ed25519
 
 # Adding your SSH key to the ssh-agent
 # https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent
-eval "$(ssh-agent -s)"
+bass eval "$(ssh-agent -s)"
 ssh-add -K ~/.ssh/id_ed25519
 
 # Adding your SSH key to your GitHub account
