@@ -138,6 +138,16 @@ set -x GOPATH $XDG_DATA_HOME/go
 # nodejs
 set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node/repl_history
 
+# fnm
+fnm env --use-on-cd --version-file-strategy=recursive | source
+
+# solana
+fish_add_path $XDG_DATA_HOME/solana/install/active_release/bin
+
+# zoxide
+set -x _ZO_DATA_DIR $XDG_DATA_HOME/zoxide
+zoxide init fish --cmd cd | source
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
