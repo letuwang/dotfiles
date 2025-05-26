@@ -166,6 +166,3 @@ alias ll="gls -AhlFo --color --group-directories-first"
 alias c="clear"
 alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
 alias pinentry='pinentry-mac'
-
-# ssh agent
-fish_ssh_agent
