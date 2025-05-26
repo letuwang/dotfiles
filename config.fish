@@ -1,26 +1,5 @@
 # fish settings
 set fish_greeting ""
-set -g fish_color_autosuggestion '555'  'brblack'
-set -g fish_color_cancel -r
-set -g fish_color_command --bold
-set -g fish_color_comment red
-set -g fish_color_cwd green
-set -g fish_color_cwd_root red
-set -g fish_color_end brmagenta
-set -g fish_color_error brred
-set -g fish_color_escape 'bryellow'  '--bold'
-set -g fish_color_history_current --bold
-set -g fish_color_host normal
-set -g fish_color_match --background=brblue
-set -g fish_color_normal normal
-set -g fish_color_operator bryellow
-set -g fish_color_param cyan
-set -g fish_color_quote yellow
-set -g fish_color_redirection brblue
-set -g fish_color_search_match 'bryellow'  '--background=brblack'
-set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
-set -g fish_color_user brgreen
-set -g fish_color_valid_path --underline
 
 # dotfiles
 set -x DOTFILES "$HOME/.dotfiles"
@@ -42,7 +21,6 @@ set -x GNUPGHOME $XDG_DATA_HOME/gnupg
 eval "/opt/homebrew/bin/brew shellenv" | source
 set -x HOMEBREW_NO_ANALYTICS 1
 set -x HOMEBREW_NO_ENV_HINTS 1
-set -x HOMEBREW_AUTOREMOVE 1
 set -x HOMEBREW_BAT 1
 
 # starship
@@ -73,11 +51,11 @@ fish_add_path $HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
 fish_add_path $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin
 
 # orbstack
-source ~/.orbstack/shell/init.fish ^/dev/null; or true
+source ~/.orbstack/shell/init2.fish ^/dev/null; or true
 
-# vscode
+# vscode and cursor
 string match -q "$TERM_PROGRAM" "vscode"
-and . "/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/browser/media/fish_xdg_data/fish/vendor_conf.d/shellIntegration.fish"
+and . "/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/browser/media/fish_xdg_data/fish/vendor_conf.d/shellIntegration.fish"
 
 # docker
 set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
@@ -131,6 +109,7 @@ fish_add_path $CARGO_HOME/bin
 
 # Android
 set -x ANDROID_USER_HOME $XDG_DATA_HOME/android
+alias adb="HOME=$XDG_DATA_HOME/android adb"
 
 # Go
 set -x GOPATH $XDG_DATA_HOME/go
@@ -147,6 +126,25 @@ fish_add_path $XDG_DATA_HOME/solana/install/active_release/bin
 # zoxide
 set -x _ZO_DATA_DIR $XDG_DATA_HOME/zoxide
 zoxide init fish --cmd cd | source
+
+# CocoaPods
+set -x CP_HOME_DIR $XDG_DATA_HOME/cocoapods
+
+# 1Password
+set -x SSH_AUTH_SOCK ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
+# homebrew command not found
+set HB_CNF_HANDLER (brew --repository)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
+if test -f $HB_CNF_HANDLER
+    source $HB_CNF_HANDLER
+end
+
+# gem
+set -x GEM_HOME $XDG_DATA_HOME/gem
+set -x GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
+
+# React
+set -x REACT_EDITOR "cursor"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
