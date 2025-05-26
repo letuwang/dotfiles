@@ -11,6 +11,7 @@ brew 'bash'
 brew 'bat'
 brew 'coreutils'
 brew 'findutils'
+brew 'fnm'
 brew 'gh'
 brew 'git'
 brew 'git-lfs'
@@ -34,7 +35,6 @@ brew 'zoxide'
 
 # Development
 brew 'openjdk'
-brew 'openjdk@11'
 brew 'perl'
 brew 'r'
 
